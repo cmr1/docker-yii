@@ -1,5 +1,7 @@
 # Dockerized Yii Application
 
+[![Build Status](https://travis-ci.org/cmr1/docker-yii.svg?branch=master)](https://travis-ci.org/cmr1/docker-yii)
+
 ### Usage
 
 1. Change directory to your working dir
