@@ -30,6 +30,8 @@ COPY docker-entrypoint.sh /
 
 RUN chmod +x /wait-for-it.sh && chmod +x /docker-entrypoint.sh
 
+VOLUME [ "/var/www/html/web" ]
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["php-fpm"]

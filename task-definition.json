@@ -1,0 +1,108 @@
+{
+    "networkMode": "bridge",
+    "family": "yii",
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "cmr1/nginx-proxy:fpm",
+            "cpu": 128,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 0
+                }
+            ],
+            "links": [
+                "app:app"
+            ],
+            "volumesFrom": [
+                {
+                    "sourceContainer": "app"
+                }
+            ],
+            "environment": [
+                {
+                    "name": "SERVER_TYPE",
+                    "value": "elb"
+                },
+                {
+                    "name": "SERVER_NAME",
+                    "value": "yii.cmr1.com"
+                },
+                {
+                    "name": "SERVER_BACKENDS",
+                    "value": "/:app:9000"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "cmr1-yii",
+                    "awslogs-region": "us-east-1"
+                }
+            }
+        },
+        {
+            "name": "app",
+            "image": "cmr1/yii-example",
+            "cpu": 256,
+            "memory": 256,
+            "links": [
+                "mysql:mysql"
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "cmr1-yii",
+                    "awslogs-region": "us-east-1"
+                }
+            },
+            "environment": [
+                {
+                    "name": "APP_ENV",
+                    "value": "development"
+                },
+                {
+                    "name": "DB_PASS",
+                    "value": "P@s5w0rD!"
+                },
+                {
+                    "name": "DB_USER",
+                    "value": "root"
+                },
+                {
+                    "name": "DB_NAME",
+                    "value": "yii"
+                },
+                {
+                    "name": "DB_HOST",
+                    "value": "mysql"
+                },
+                {
+                    "name": "DB_PORT",
+                    "value": 3306
+                }
+            ]
+        },
+        {
+            "name": "mysql",
+            "image": "mysql:5.7",
+            "cpu": 256,
+            "memory": 256,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "cmr1-yii",
+                    "awslogs-region": "us-east-1"
+                }
+            },
+             "environment": [
+                {
+                    "name": "MYSQL_ROOT_PASSWORD",
+                    "value": "P@s5w0rD!"
+                }
+            ]
+        }
+    ]
+}
