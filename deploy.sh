@@ -3,6 +3,9 @@
 set -e
 
 IMAGE=cmr1/yii-example
+CLUSTER=bowtie-v1-test
+SERVICE=yii
+TASK_DEFINITION=yii
 BRANCH_TARGETS=()
 
 should_deploy_branch() {
@@ -36,10 +39,20 @@ push() {
   docker push $IMAGE:$TAG
 }
 
+deploy() {
+  echo "Update ECS Anchor Task Definition..."
+  aws ecs register-task-definition --cli-input-json file://task-definition.json
+
+  echo "Update ECS Anchor Service..."
+  aws ecs update-service --cluster $CLUSTER --service $SERVICE --task-definition $TASK_DEFINITION
+}
+
 if [ ! -z "$TRAVIS_TAG" ]; then
   push $TRAVIS_TAG
 elif [ "$TRAVIS_BRANCH" == "master" ]; then
-  push latest
+  push latest && deploy
 elif should_deploy_branch $TRAVIS_BRANCH; then
   push $TRAVIS_BRANCH
 fi
+
+echo "Finished!"
