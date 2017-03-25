@@ -9,7 +9,7 @@ services:
       - mysql:/var/lib/mysql
       
   app:
-    build: .
+    build: . 
     volumes:
       - ./src:/var/www/html
     env_file:
