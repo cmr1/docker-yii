@@ -50,6 +50,8 @@ deploy() {
 if [ ! -z "$TRAVIS_TAG" ]; then
   push $TRAVIS_TAG
 elif [ "$TRAVIS_BRANCH" == "master" ]; then
+  push latest
+elif [ "$TRAVIS_BRANCH" == "release" ]; then
   push latest && deploy
 elif should_deploy_branch $TRAVIS_BRANCH; then
   push $TRAVIS_BRANCH
