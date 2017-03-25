@@ -17,6 +17,8 @@ script:
   - docker ps -a
   - sleep 5
   - docker logs dockeryii_app_1
+  - docker logs dockeryii_nginx_1
+  - docker logs dockeryii_mysql_1
   - ./test.sh
 
 cache:
