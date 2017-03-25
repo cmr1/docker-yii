@@ -4,7 +4,7 @@
     "containerDefinitions": [
         {
             "name": "nginx",
-            "image": "cmr1/nginx-proxy:fpm",
+            "image": "cmr1/nginx-proxy:php-fpm",
             "cpu": 128,
             "memory": 128,
             "portMappings": [
@@ -23,16 +23,24 @@
             ],
             "environment": [
                 {
+                    "name": "SECRET_TOKEN",
+                    "value": "SomethingVerySecure!"
+                },
+                {
                     "name": "SERVER_TYPE",
-                    "value": "elb"
+                    "value": "http"
                 },
                 {
                     "name": "SERVER_NAME",
-                    "value": "ecs.bowtie.io"
+                    "value": "yii.bowtie.io"
+                },
+                {
+                    "name": "SERVER_ROOT",
+                    "value": "/var/www/html/web"
                 },
                 {
                     "name": "SERVER_BACKENDS",
-                    "value": "/yii:app:9000"
+                    "value": "/:app:9000"
                 }
             ],
             "logConfiguration": {
@@ -62,6 +70,10 @@
                 {
                     "name": "APP_ENV",
                     "value": "development"
+                },
+                {
+                    "name": "MYSQL_ROOT_PASSWORD",
+                    "value": "P@s5w0rD!"
                 },
                 {
                     "name": "DB_PASS",

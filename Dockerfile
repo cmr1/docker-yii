@@ -30,7 +30,7 @@ COPY docker-entrypoint.sh /
 
 RUN chmod +x /wait-for-it.sh && chmod +x /docker-entrypoint.sh
 
-VOLUME [ "/var/www/html/web" ]
+VOLUME [ "/var/www/html" ]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 

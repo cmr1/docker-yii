@@ -23,8 +23,8 @@ services:
       - .yii.env
     ports:
       - '80:80'
-    volumes:
-      - ./src/web:/var/www/html/web
+    volumes_from:
+      - app
     depends_on:
       - app
 
