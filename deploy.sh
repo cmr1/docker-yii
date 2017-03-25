@@ -21,7 +21,7 @@ push() {
 
   # Build image with release tag
   echo "Building tagged release '$TAG'"
-  docker build -t $IMAGE:$TAG
+  docker build -t $IMAGE:$TAG .
 
   # Authenticate with DockerHub
   echo "Authenticating with DockerHub"

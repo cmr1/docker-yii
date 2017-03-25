@@ -28,17 +28,17 @@
                 },
                 {
                     "name": "SERVER_NAME",
-                    "value": "yii.cmr1.com"
+                    "value": "ecs.bowtie.io"
                 },
                 {
                     "name": "SERVER_BACKENDS",
-                    "value": "/:app:9000"
+                    "value": "/yii:app:9000"
                 }
             ],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "cmr1-yii",
+                    "awslogs-group": "test/yii",
                     "awslogs-region": "us-east-1"
                 }
             }
@@ -54,7 +54,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "cmr1-yii",
+                    "awslogs-group": "test/yii",
                     "awslogs-region": "us-east-1"
                 }
             },
@@ -81,7 +81,7 @@
                 },
                 {
                     "name": "DB_PORT",
-                    "value": 3306
+                    "value": "3306"
                 }
             ]
         },
@@ -93,7 +93,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "cmr1-yii",
+                    "awslogs-group": "test/yii",
                     "awslogs-region": "us-east-1"
                 }
             },
