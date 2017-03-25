@@ -20,6 +20,5 @@ before_install:
 script:
 - docker ps -a
 - "./test.sh"
-cache:
-  directories:
-  - docker
+after_success:
+- "./deploy.sh"
