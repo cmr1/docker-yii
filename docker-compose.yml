@@ -18,7 +18,9 @@ services:
       - mysql
   
   nginx:
-    build: ./nginx/
+    image: cmr1/nginx-proxy:php-fpm
+    env_file:
+      - .yii.env
     ports:
       - '80:80'
     volumes:
