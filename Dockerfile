@@ -43,17 +43,17 @@ RUN chown -R app:app /app \
 
 USER app
 
-COPY *.token /app/
+WORKDIR /app
+
+COPY .github.token .
+
+RUN composer config -g github-oauth.github.com "$(cat .github.token)" \
+    && composer global require "composer-plugin-api:^1.0.0" \
+    && composer global require "fxp/composer-asset-plugin:~1.1.3"
 
 WORKDIR /var/www/html
 
 COPY ./src/composer.json .
-
-ARG GITHUB_TOKEN
-
-RUN composer config -g github-oauth.github.com "${GITHUB_TOKEN:-$(cat /app/.github.token)}" \
-    && composer global require "composer-plugin-api:^1.0.0" \
-    && composer global require "fxp/composer-asset-plugin:~1.1.3"
 
 RUN composer install
 

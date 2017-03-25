@@ -19,8 +19,8 @@ env:
 services:
 - docker
 before_install:
+- echo "$GITHUB_TOKEN" > .github.token
 - pip install awscli
-- aws ecs describe-clusters
 - docker-compose build
 - docker-compose up -d
 script:
