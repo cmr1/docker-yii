@@ -18,7 +18,9 @@
     - *This file must be created, because it is ignored in `.gitignore`*
 5. Build Docker containers
   - `docker-compose build`
-6. Run Docker containers
+6. Install composer packages on mounted volume
+  - `docker-compose run  app composer install`
+7. Run Docker containers
   - `docker-compose up`
-7. Visit in your browser!
+8. Visit in your browser!
   - [http://localhost](http://localhost)

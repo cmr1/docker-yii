@@ -10,8 +10,8 @@ services:
       
   app:
     build: . 
-    # volumes:
-    #   - ./src:/var/www/html
+    volumes:
+      - ./src:/var/www/html
     env_file:
       - .yii.env
     depends_on:
