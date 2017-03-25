@@ -15,7 +15,8 @@ before_install:
 
 script:
   - docker ps -a
-  - sleep 2
+  - sleep 5
+  - docker logs dockeryii_app_1
   - ./test.sh
 
 cache:
