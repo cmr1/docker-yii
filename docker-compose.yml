@@ -9,9 +9,9 @@ services:
       - mysql:/var/lib/mysql
       
   app:
-    build: .
-    volumes:
-      - ./src:/var/www/html
+    build: . 
+    # volumes:
+    #   - ./src:/var/www/html
     env_file:
       - .yii.env
     depends_on:
