@@ -59,6 +59,8 @@ RUN composer install
 
 COPY ./src/ .
 
+USER root
+
 VOLUME [ "/var/www/html" ]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
