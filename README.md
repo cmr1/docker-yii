@@ -1,6 +1,8 @@
-# Dockerized Yii Application
+[![Travis Build Status](https://img.shields.io/travis/cmr1/docker-yii.svg?style=flat-square)](https://travis-ci.org/cmr1/docker-yii)
+[![DockerHub pulls](https://img.shields.io/docker/pulls/cmr1/yii-example.svg?style=flat-square)](https://hub.docker.com/r/cmr1/yii-example)
+[![DockerHub stars](https://img.shields.io/docker/stars/cmr1/yii-example.svg?style=flat-square)](https://hub.docker.com/r/cmr1/yii-example)
 
-[![Build Status](https://travis-ci.org/cmr1/docker-yii.svg?branch=master)](https://travis-ci.org/cmr1/docker-yii)
+# Dockerized Yii Application
 
 ### Usage
 

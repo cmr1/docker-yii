@@ -24,7 +24,10 @@ before_install:
 - docker-compose build
 - docker-compose up -d
 script:
-- docker ps -a
+- docker-compose ps
 - "./test.sh"
 after_success:
 - "./deploy.sh"
+notifications:
+  slack:
+    secure: B36GkW/YLNRx2c451FYOIUJJfXM/lTQyatfvw4/uph4WY7loa/58H/dIksSi9KsaVee8P51UIfrhvjk0ZI8EaiVQSxxVlQnC7uW8o5larrRTbGLgxjoUzkyjZaF+9Em+EHhgDLjSCMWv0NI1SY+cJ2z8FcbsH+/z67oimz0bUbaEytTv6kTgSZQ6zFUTL6tb6hNkjvrXcKb1DAYAKFhHji0WRZAdFbbedHs7dswBWZ9FZqyTXiC/uC5U19NTL3+P+r1qrMm6aD5J69TIukWf+nABxxYGT75fFLQRWs4lq7+HemH/Dvj5hNAA/veqeQGl0jAyfj4NcHV8Fkd9trHcaVp+xEHNRMe1N8OIjHA5JoP/rPoc/7UpxFWy4lHzPZ2pUJevXBP7hyUJipZsM7j0Ifwv05/KYSWw/GXCTJ0E2aUFYe4Dxf7TRRrDS4Z/uLbV1X00xJhTjVG7zlWzisfRoAoAWcH15h5bG+/0wdISxVRXs6LmE6a0AlbDgd0P/Ey7cdr35JHx+7NE7cIvOe4DG6Md2JCzY3y+HeX1fkHStIQcBEy/XwUt4wnO+Lyas9sqejLN7i7JaXwalWnLoykRhKxjpBFWlkEozOYb297OLQiRfUkC1pdYfguSsQstZW/wUGikhIbbbHPzAyORp6GVLa6N82ooi+vNNx3IbOQwd/Q=
